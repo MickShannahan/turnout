@@ -15,7 +15,7 @@ export class ConventionsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:conventionId', this.update)
-      .delete(':conventionId', this.remove)
+      .delete('/:conventionId', this.remove)
   }
   async getConventionBooths(req, res, next) {
     try {
@@ -35,7 +35,7 @@ export class ConventionsController extends BaseController {
   }
   async getOneById(req, res, next) {
     try {
-      const con = await conventionsService.getOneById(req.params.id)
+      const con = await conventionsService.getOneById(req.params.conventionId)
       return res.send(con)
     } catch (error) {
       next(error)
@@ -43,7 +43,7 @@ export class ConventionsController extends BaseController {
   }
   async create(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.ObjectId
+      req.body.creatorId = req.userInfo.id
       const con = await conventionsService.create(req.body)
       return res.send(con)
     } catch (error) {

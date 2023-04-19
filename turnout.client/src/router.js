@@ -17,6 +17,16 @@ const routes = [
     component: loadPage('AboutPage')
   },
   {
+    path: '/convention/:conventionId',
+    name: 'Convention Details',
+    component: loadPage('ConventionDetailsPage')
+  },
+  {
+    path: '/sponsor/:sponsorId',
+    name: 'Sponsor Details',
+    component: loadPage('SponsorDetailsPage')
+  },
+  {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),

@@ -5,7 +5,9 @@ export const BoothSchema = new Schema(
   {
     sponsorId: { type: ObjectId, required: true, ref: 'Account' },
     conventionId: { type: ObjectId, required: true, ref: 'Convention' },
-    boothSize: { type: String, required: true, enum: ['small', 'regulari', 'large'], default: 'small' },
+    name: { type: String, required: true, maxLength: 25 },
+    description: { type: String, maxLength: 255 },
+    imgUrl: { type: String, required: true, default: 'https://www.reviewjournal.com/wp-content/uploads/2018/10/11239552_web1_G2E_100818cb_009.jpg' },
     keynote: { type: Boolean, required: true, default: false },
     appointmentRequired: { type: Boolean, required: true, default: false },
     productsForSale: { type: Boolean, required: true, default: false }
@@ -13,13 +15,13 @@ export const BoothSchema = new Schema(
 )
 
 BoothSchema.virtual('sponsor', {
-  localField: 'companyId',
+  localField: 'sponsorId',
   foreignField: '_id',
-  ref: 'Company',
+  ref: 'Account',
   justOne: true
 })
 
-BoothSchema.virtual('Convention', {
+BoothSchema.virtual('convention', {
   localField: 'conventionId',
   foreignField: '_id',
   ref: 'Convention',

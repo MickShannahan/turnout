@@ -1,18 +1,50 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="container">
+    <form @submit.prevent="editAccount" class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <h5>Edit your sponsor profile</h5>
+        <div class="mb-3">
+          <label class="form-label">Sponsor Name</label>
+          <input v-model="editable.sponsorName" type="text" class="form-control" name="" id="" aria-describedby="helpId"
+            placeholder="">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Sponsor Image</label>
+          <input v-model="editable.sponsorImgUrl" type="Url" class="form-control" name="" id="" aria-describedby="helpId"
+            placeholder="">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Sponsor Color</label>
+          <input v-model="editable.sponsorColor" type="Color" class="form-control" name="" id="" aria-describedby="helpId"
+            placeholder="">
+        </div>
+        <button class="btn btn-success">save changes</button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { AppState } from '../AppState'
+import Pop from '../utils/Pop.js'
+import { accountService } from '../services/AccountService.js'
 export default {
   setup() {
+    const editable = ref({})
+    watchEffect(() => {
+      editable.value = { ...AppState.account }
+    })
     return {
-      account: computed(() => AppState.account)
+      editable,
+      account: computed(() => AppState.account),
+      async editAccount() {
+        try {
+          await accountService.updateAccount(editable.value)
+        } catch (error) {
+          Pop.error(error, 'edit account')
+        }
+      }
     }
   }
 }

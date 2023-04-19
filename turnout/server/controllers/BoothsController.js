@@ -13,15 +13,20 @@ export class BoothsController extends BaseController {
   }
   async create(req, res, next) {
     try {
-      const booth = await boothsService.create(req.body, req.userInfoId)
+      req.body.sponsorId = req.userInfo.id
+      const booth = await boothsService.create(req.body)
       return res.send(booth)
     } catch (error) {
       next(error)
     }
   }
   async remove(req, res, next) {
-    const message = await boothsService.remove(req.params.boothId, req.userInfo.id)
-    return res.send(message)
+    try {
+      const message = await boothsService.remove(req.params.boothId, req.userInfo.id)
+      return res.send(message)
+    } catch (error) {
+      next(error)
+    }
   }
 
 

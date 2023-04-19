@@ -1,23 +1,53 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
+  <div class="container-fluid">
+    <section class="row p-3">
+      <h1>THIS IS THE APP THAT JOINS PEOPLE TO PLACES</h1>
+    </section>
+    <section class="row justify-content-center mt-5">
+      <div class="col-12 col-md-8">
+        <h5>upcoming conventions</h5>
+      </div>
+      <div class="col-12 col-md-8">
+        <section class="row">
+
+          <div class="col-12 col-md-6 col-lg-3 mb-2" v-for="c in conventions">
+            <ConventionCard :convention="c" />
+          </div>
+
+        </section>
+      </div>
+
+
+    </section>
   </div>
 </template>
 
 <script>
+import Pop from '../utils/Pop.js';
+import { conventionsService } from '../services/ConventionsService.js'
+import { onMounted } from 'vue';
+import ConventionCard from '../components/ConventionCard.vue';
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState.js';
+
 export default {
   setup() {
-    return {}
-  }
+    onMounted(() => {
+      getConventions();
+    });
+    async function getConventions() {
+      try {
+        await conventionsService.getConventions();
+      }
+      catch (error) {
+        Pop.error(error, "get conventions");
+      }
+    }
+    return {
+      conventions: computed(() => AppState.conventions)
+    };
+  },
+  components: { ConventionCard }
 }
 </script>
 
