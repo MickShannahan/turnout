@@ -4,9 +4,9 @@ export class Account {
     this.email = data.email
     this.name = data.name
     this.picture = data.picture
-    this.sponsorName = data.sponsorName
-    this.sponsorImgUrl = data.sponsorImgUrl
-    this.sponsorColor = data.sponsorColor
+    this.orgName = data.orgName
+    this.orgUrl = data.orgUrl
+    this.orgColor = data.orgColor
     // TODO add additional properties if needed
   }
 }

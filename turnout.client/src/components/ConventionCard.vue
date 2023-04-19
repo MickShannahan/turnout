@@ -11,11 +11,11 @@
         </span>
         <span class="d-flex border-bottom border-primary"></span>
         <div class="bg-dark w-100 p-1">
-          <div>
+          <div class="text-info">
             {{ convention.tags }}
           </div>
           <div class="text-end text-grey">
-            {{ convention.date }}
+            {{ new Date(convention.date).toLocaleDateString() }}
           </div>
         </div>
       </div>

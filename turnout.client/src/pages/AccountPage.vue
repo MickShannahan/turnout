@@ -5,17 +5,17 @@
         <h5>Edit your sponsor profile</h5>
         <div class="mb-3">
           <label class="form-label">Sponsor Name</label>
-          <input v-model="editable.sponsorName" type="text" class="form-control" name="" id="" aria-describedby="helpId"
+          <input v-model="editable.orgName" type="text" class="form-control" name="" id="" aria-describedby="helpId"
             placeholder="">
         </div>
         <div class="mb-3">
           <label class="form-label">Sponsor Image</label>
-          <input v-model="editable.sponsorImgUrl" type="Url" class="form-control" name="" id="" aria-describedby="helpId"
+          <input v-model="editable.orgUrl" type="Url" class="form-control" name="" id="" aria-describedby="helpId"
             placeholder="">
         </div>
         <div class="mb-3">
           <label class="form-label">Sponsor Color</label>
-          <input v-model="editable.sponsorColor" type="Color" class="form-control" name="" id="" aria-describedby="helpId"
+          <input v-model="editable.orgColor" type="Color" class="form-control" name="" id="" aria-describedby="helpId"
             placeholder="">
         </div>
         <button class="btn btn-success">save changes</button>

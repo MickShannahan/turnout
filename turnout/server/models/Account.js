@@ -8,10 +8,10 @@ export const AccountSchema = new Schema(
     email: { type: String, lowercase: true, unique: true },
     name: { type: String, required: true },
     picture: { type: String },
-    // REVIEW required to add
-    sponsorName: { type: String },
-    sponsorImgUrl: { type: String },
-    sponsorColor: { type: String, required: true, default: '#16161d' }
+    // REVIEW required rename to org
+    orgName: { type: String },
+    orgUrl: { type: String },
+    orgColor: { type: String, required: true, default: '#16161d' }
     // NOTE If you wish to add additional properties do so here
   },
   { timestamps: true, toJSON: { virtuals: true } }

@@ -12,6 +12,11 @@
       <small>comma separated</small>
     </div>
     <div class="mb-3 col-12">
+      <label for="" class="form-label">Description</label>
+      <textarea v-model="editable.description" type="text" class="form-control" name="" id="" aria-describedby="helpId"
+        placeholder=""></textarea>
+    </div>
+    <div class="mb-3 col-12">
       <label for="" class="form-label">Cover Image</label>
       <input v-model="editable.imgUrl" type="url" class="form-control" name="" id="" aria-describedby="helpId"
         placeholder="">

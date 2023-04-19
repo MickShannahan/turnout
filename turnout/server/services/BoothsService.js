@@ -7,7 +7,7 @@ class BoothsService {
 
   async create(boothData, userId) {
     const booth = await dbContext.Booths.create(boothData)
-    await booth.populate('sponsor', 'sponsorName sponsorColor sponsorImgUrl')
+    await booth.populate('sponsor', 'orgName orgColor orgUrl')
     return booth
   }
   async remove(boothId, userId) {
@@ -22,7 +22,7 @@ class BoothsService {
   }
 
   async findByConventionId(conventionId) {
-    const booths = await dbContext.Booths.find({ conventionId }).populate('sponsor', 'sponsorName sponsorImgUrl sponsorColor')
+    const booths = await dbContext.Booths.find({ conventionId }).populate('sponsor', 'orgName orgUrl orgColor')
     return booths
   }
 

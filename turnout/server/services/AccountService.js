@@ -41,9 +41,9 @@ function sanitizeBody(body) {
   const writable = {
     name: body.name,
     picture: body.picture,
-    sponsorName: body.sponsorName,
-    sponsorImgUrl: body.sponsorImgUrl,
-    sponsorColor: body.sponsorColor,
+    orgName: body.orgName,
+    orgUrl: body.orgUrl,
+    orgColor: body.orgColor,
   }
   return writable
 }

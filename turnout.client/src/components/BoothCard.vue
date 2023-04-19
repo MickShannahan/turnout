@@ -1,13 +1,13 @@
 <template>
-  <div class="booth-card rounded" :style="`box-shadow: 0px 0px 30px ${booth.sponsor.sponsorColor}66`">
-    <section class="rounded hovering" :style="`background-color: ${booth.sponsor.sponsorColor}`">
+  <div class="booth-card rounded" :style="`box-shadow: 0px 0px 30px ${booth.sponsor.orgColor}66`">
+    <section class="rounded hovering" :style="`background-color: ${booth.sponsor.orgColor}`">
       <img :src="booth.imgUrl" class="rounded" :alt="booth.name">
       <div class="sponsor-divider rounded-bottom"></div>
       <div class="description rounded p-1 text-white d-flex flex-column justify-content-between">
-        <div>{{ booth.description }}</div>
+        <div class="p-1">{{ booth.description }}</div>
         <div class="d-flex justify-content-between"><span>sponsored by</span> <span class="fw-bold"><i
               class="mdi mdi-account"></i><router-link
-              :to="{ name: 'Sponsor Details', params: { sponsorId: booth.sponsorId } }">{{ booth.sponsor.sponsorName
+              :to="{ name: 'Sponsor Details', params: { sponsorId: booth.sponsorId } }">{{ booth.sponsor.orgName
               }}</router-link></span>
         </div>
       </div>
@@ -38,6 +38,7 @@ const props = defineProps({ booth: { type: Object, required: true } })
 
 <style lang="scss" scoped>
 .booth-card {
+  background-color: rgb(2, 0, 5);
 
   img {
     height: 225px;

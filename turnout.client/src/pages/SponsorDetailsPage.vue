@@ -2,11 +2,11 @@
   <div v-if="sponsor" class="container-fluid">
     <section class="row justify-content-center">
       <div class="col-12 col-md-8">
-        <img class="img-fluid sponsor-img" :src="sponsor.sponsorImgUrl" alt="">
-        <h2 class="text-center border-bottom border-primary pb-2 text-white">{{ sponsor.sponsorName }}</h2>
+        <img class="img-fluid sponsor-img" :src="sponsor.orgUrl" alt="">
+        <h2 class="text-center border-bottom border-primary pb-2 text-white">{{ sponsor.orgName }}</h2>
         <section class="row g-3">
           <div class="col-12 fw-bold mb-3">
-            Conventions {{ sponsor.sponsorName }} is going to
+            Conventions {{ sponsor.orgName }} is going to
           </div>
           <div v-for="b in booths" class="col-12 col-md-3">
             <SponsorBoothCard :sponsorBooth="b" />

@@ -1,6 +1,7 @@
 <template>
   <header>
     <Navbar />
+    <div class="gradient-border"></div>
   </header>
   <main>
     <router-view />
@@ -11,9 +12,6 @@
       <ConventionForm />
     </template>
   </Modal>
-  <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
 </template>
 
 <script>
@@ -34,10 +32,20 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+body {
+  background: linear-gradient(116.82deg, #0b0b17 0%, #1D1D46 100%);
+}
+
 :root {
   --main-height: calc(100vh - 32px - 64px);
 }
 
+.gradient-border {
+  height: 1px;
+  background-image: linear-gradient(90deg, #6C75F7 -0.28%, #9284D1 100.27%);
+
+
+}
 
 footer {
   display: grid;

@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="createBooth" class="row bg-primary darken-50 border border-primary rounded py-2">
+  <form @submit.prevent="createBooth" class="row ">
     <div class="col-12">
-      <h3>Book a booth for {{ account.sponsorName }}</h3>
+      <h3>Book a booth for {{ account.orgName }}</h3>
       <h5 class="text-light">{{ convention.boothSpots - convention.boothCount }} spots still open</h5>
     </div>
     <div class="col-6 mb-3">
@@ -55,8 +55,8 @@ const convention = computed(() => AppState.activeConvention)
 const account = computed(() => AppState.account)
 watchEffect(() => {
   const boothData = editable.value
-  boothData.imgUrl = account.value.sponsorImgUrl
-  boothData.name = account.value.sponsorName + "'s booth."
+  boothData.imgUrl = account.value.orgUrl
+  boothData.name = account.value.orgName + "'s booth."
 })
 async function createBooth() {
   try {
